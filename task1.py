@@ -1,72 +1,41 @@
-print("Illya Vorobey, IT-31")
+name = "Illya"
+surname = "Vorobey"
+group = "IT-31"
+year = 2008
 
-d = 5
-c = 7
 
-count = 0
-total = 0
-product = 1
-even = 0
-odd = 0
+def print_card():
+    """Print the student's personal information."""
+    print(f"Name: {name} {surname}")
+    print(f"Group: {group}")
+    print(f"Birth year: {year}")
 
-print(f"Numbers from {d} to 31:", end=" ")
 
-for number in range(d, 32):
-    print(number, end=" ")
-    count += 1
-    total += number
-    product *= number
+def print_card_args(name, surname, group=group, year=year):
+    """Print personal information using function parameters."""
+    print(f"{name} {surname}, {group}, {year}")
 
-    if number % 2 == 0:
-        even += 1
-    else:
-        odd += 1
 
-average = total / count
+print(f"{name} {surname}, {group}")
 
-print()
-print(f"Count: {count}")
-print(f"Sum: {total}")
-print(f"Product: {product}")
-print(f"Average: {average:.2f}")
-print(f"Even: {even}, odd: {odd}")
+print("--- no parameters, call 1 ---")
+print_card()
 
-# while version
+print("--- no parameters, call 2 ---")
+print_card()
 
-count = 0
-total = 0
-product = 1
-even = 0
-odd = 0
-number = d
+print("--- no parameters, call 3 ---")
+print_card()
 
-print(f"Numbers from {d} to 31:", end=" ")
+print("--- positional arguments ---")
+print_card_args("Illya", "Vorobey", "IT-31", 2008)
 
-while number <= 31:
-    print(number, end=" ")
-    count += 1
-    total += number
-    product *= number
+print("--- keyword arguments ---")
+print_card_args(year=2008, group="IT-31",
+                surname="Vorobey", name="Illya")
 
-    if number % 2 == 0:
-        even += 1
-    else:
-        odd += 1
+print("--- mixed arguments ---")
+print_card_args("Illya", "Vorobey", group="IT-31", year=2008)
 
-    number += 1
-
-average = total / count
-
-print()
-print(f"Count: {count}")
-print(f"Sum: {total}")
-print(f"Product: {product}")
-print(f"Average: {average:.2f}")
-print(f"Even: {even}, odd: {odd}")
-
-print("Countdown:", end=" ")
-
-for number in range(c, 0, -1):
-    print(number, end=" ")
-
-print()
+print("--- default group ---")
+print_card_args("Illya", "Vorobey", year=2008)

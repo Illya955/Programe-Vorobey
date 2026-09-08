@@ -1,30 +1,87 @@
-print("Illya Vorobey, IT-31")
+def read_grade(prompt):
+    """Read and return a valid grade from 0 to 100."""
+    while True:
+        value = input(prompt)
 
-attempts = 0
+        if not value.isdigit():
+            print("Error: digits only")
+            continue
 
-while True:
-    score = int(input("Enter your score (0-100): "))
-    attempts += 1
+        grade = int(value)
 
-    if score < 0:
-        print("Score cannot be negative")
-    elif score > 100:
-        print("Score is too big, maximum is 100")
-    else:
-        break
+        if grade < 0 or grade > 100:
+            print("Error: the value must be between 0 and 100")
+            continue
 
-if score >= 90:
-    grade = "A"
-elif score >= 82:
-    grade = "B"
-elif score >= 74:
-    grade = "C"
-elif score >= 64:
-    grade = "D"
-elif score >= 60:
-    grade = "E"
-else:
-    grade = "F"
+        return grade
 
-print(f"Accepted after {attempts} attempts")
-print(f"Grade: {grade}")
+
+def to_letter(grade):
+    """Convert a numeric grade to a letter grade."""
+    if grade >= 90:
+        return "A"
+
+    if grade >= 82:
+        return "B"
+
+    if grade >= 74:
+        return "C"
+
+    if grade >= 64:
+        return "D"
+
+    if grade >= 60:
+        return "E"
+
+    return "F"
+
+
+def average(grades):
+    """Return the arithmetic mean of the grades."""
+    return sum(grades) / len(grades)
+
+
+def count_above(grades, limit):
+    """Return the number of grades greater than the limit."""
+    count = 0
+
+    for grade in grades:
+        if grade > limit:
+            count += 1
+
+    return count
+
+
+def print_report(name, group, grades):
+    """Print the student's grade report."""
+    avg = average(grades)
+    letter = to_letter(avg)
+    above = count_above(grades, avg)
+
+    print("--- Report ---")
+    print(f"Student: {name}, group {group}")
+    print("Grades:", *grades)
+    print(f"Average: {avg:.2f} -> {letter}")
+    print(f"Best: {max(grades)}, worst: {min(grades)}")
+    print(f"Above average: {above}")
+
+
+def main():
+    """Read five grades and print the student's report."""
+    name = "Illya"
+    surname = "Vorobey"
+    group = "IT-31"
+    n = len(name)
+
+    print(f"{name} {surname}, {group}")
+
+    grades = []
+
+    for i in range(1, n + 1):
+        grade = read_grade(f"Grade {i} (0-100): ")
+        grades.append(grade)
+
+    print_report(f"{name} {surname}", group, grades)
+
+
+main()

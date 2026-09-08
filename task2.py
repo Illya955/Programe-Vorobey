@@ -1,62 +1,40 @@
-print("Illya Vorobey, IT-31")
+name = "Illya"
+surname = "Vorobey"
+group = "IT-31"
+y = 2008
 
-number = int(input("Enter an integer: "))
 
-if number <= 0:
-    if number == 0:
-        print("Digits: 1")
-        print("Sum of digits: 0")
-        print("Max digit: 0, min digit: 0")
-        print("Reversed: 0")
-    else:
-        number = abs(number)
+def print_age(year):
+    """Print the age and return nothing."""
+    age = 2026 - year
+    print(f"Age: {age}")
 
-        digits = 0
-        digit_sum = 0
-        max_digit = 0
-        min_digit = 9
-        reversed_number = 0
 
-        while number > 0:
-            digit = number % 10
-            digits += 1
-            digit_sum += digit
+def get_age(year, current_year=2026):
+    """Return the age for the specified current year."""
+    if year > current_year or year < 0:
+        return -1
 
-            if digit > max_digit:
-                max_digit = digit
+    age = current_year - year
+    return age
 
-            if digit < min_digit:
-                min_digit = digit
+    print("after return")
 
-            reversed_number = reversed_number * 10 + digit
-            number //= 10
 
-        print(f"Digits: {digits}")
-        print(f"Sum of digits: {digit_sum}")
-        print(f"Max digit: {max_digit}, min digit: {min_digit}")
-        print(f"Reversed: {reversed_number}")
-else:
-    digits = 0
-    digit_sum = 0
-    max_digit = 0
-    min_digit = 9
-    reversed_number = 0
+print(f"{name} {surname}, {group}")
 
-    while number > 0:
-        digit = number % 10
-        digits += 1
-        digit_sum += digit
+print_age(y)
 
-        if digit > max_digit:
-            max_digit = digit
+result = print_age(y)
+print(f"print_age returned: {result}")
 
-        if digit < min_digit:
-            min_digit = digit
+age = get_age(y)
+print(f"Age from get_age: {age}")
 
-        reversed_number = reversed_number * 10 + digit
-        number //= 10
+print(f"Age in months: {age * 12}")
+print(f"Age in weeks: {age * 52}")
 
-    print(f"Digits: {digits}")
-    print(f"Sum of digits: {digit_sum}")
-    print(f"Max digit: {max_digit}, min digit: {min_digit}")
-    print(f"Reversed: {reversed_number}")
+age_2030 = get_age(y, current_year=2030)
+print(f"Age in 2030: {age_2030}")
+
+print(f"Invalid year 3000 gives: {get_age(3000)}")
