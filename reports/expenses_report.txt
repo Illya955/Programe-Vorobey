@@ -1,0 +1,17 @@
+Expenses report for Illya Vorobey (IT-31)
+Period: 2026-09-29 .. 2026-10-05
+Records: 13
+
+category     count      total   share  chart
+----------------------------------------------------
+food             6    1150.00   57.4%  ###########
+books            1     350.00   17.5%  ###
+internet         1     250.00   12.5%  ##
+coffee           2     135.00    6.7%  #
+transport        3     120.00    6.0%  #
+----------------------------------------------------
+total           13    2005.00  100.0%
+
+Top day: 2026-10-04 (550.00)
+Most expensive: books 350.00 (programming book)
+Average per day: 286.43
